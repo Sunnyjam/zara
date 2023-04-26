@@ -30,5 +30,25 @@
         WHERE PRODUCTID = #{productId}
     </delete>
 
+    <select id="readProduct" resultType="com.zara.product.Product">
+        SELECT PRODUCTID,
+               PRODUCTNAME,
+               STOCK,
+               PRICE
+        FROM PRODUCT
+        WHERE 1=1
+        <if test="productName != null">
+            AND productName like '%'||#{productName}||'%'
+        </if>
+    </select>
+
+    <select id="searchProduct" resultType="com.zara.product.Product" parameterType="String">
+        SELECT PRODUCTID,
+        PRODUCTNAME,
+        STOCK,
+        PRICE
+        FROM PRODUCT
+        WHERE PRODUCTNAME = #{productName}
+    </select>
 
 </mapper>

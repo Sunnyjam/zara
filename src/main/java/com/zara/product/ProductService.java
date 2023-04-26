@@ -3,6 +3,8 @@ package com.zara.product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ProductService {
@@ -18,5 +20,13 @@ public class ProductService {
 
     public int deleteProduct(int productId) {
         return productMapper.deleteProduct(productId);
+    }
+
+    public List<Product> readProduct() {
+        return productMapper.readProduct();
+    }
+
+    public Product searchProduct(String productName) {
+        return productMapper.searchProduct(productName);
     }
 }

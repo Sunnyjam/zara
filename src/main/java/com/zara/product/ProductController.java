@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
@@ -23,5 +25,15 @@ public class ProductController {
     @DeleteMapping("/deleteProduct/{productId}")
     public int deleteProduct(@PathVariable int productId) {
         return productService.deleteProduct(productId);
+    }
+
+    @GetMapping("/readProduct")
+    public List<Product> readProduct() {
+        return productService.readProduct();
+    }
+
+    @GetMapping("/searchProduct/{productName}")
+    public Product searchProduct(@PathVariable String productName) {
+        return productService.searchProduct(productName);
     }
 }
