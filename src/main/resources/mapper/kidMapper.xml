@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zara.kid.KidMapper">
+
+    <insert id="insertKid" parameterType="com.zara.kid.Kid" useGeneratedKeys="true" keyProperty="kidId">
+        INSERT INTO KID (
+        KIDTOP,
+        KIDBOTTOM,
+        KIDPRICE,
+        KIDSTOCK
+        )
+        VALUES (
+        #{kidTop},
+        #{kidBottom},
+        #{kidPrice},
+        #{kidStock}
+        )
+    </insert>
+
+    <update id="updateKid" parameterType="com.zara.kid.Kid">
+        UPDATE KID
+        SET KIDTOP = #{kidTop},
+            KIDBOTTOM = #{kidBottom},
+            KIDPRICE = #{kidPrice},
+            KIDSTOCK = #{kidStock}
+        WHERE KIDID = #{kidId}
+    </update>
+
+    <delete id="deleteKid" parameterType="int">
+        DELETE FROM KID
+        WHERE KIDID = #{kidId}
+    </delete>
+
+    <select id="kidList" resultType="com.zara.kid.Kid">
+        SELECT KIDTOP,
+               KIDBOTTOM,
+               KIDPRICE,
+               KIDSTOCK
+        FROM KID
+        WHERE 1=1
+        <if test="kidTop != null || kidBottom != null">
+            AND productName like '%'||#{productName}||'%'
+        </if>
+    </select>
+
+    <select id="kidTop" resultType="com.zara.kid.Kid">
+        SELECT KIDTOP,
+               KIDPRICE,
+               KIDSTOCK
+        FROM KID
+        WHERE 1=1
+        <if test="kidTop != null ">
+            AND productName like '%'||#{productName}||'%'
+        </if>
+    </select>
+    <select id="kidBottom" resultType="com.zara.kid.Kid">
+        SELECT KIDBOTTOM,
+               KIDPRICE,
+               KIDSTOCK
+        FROM KID
+        WHERE 1=1
+        <if test="kidBottom != null ">
+            AND productName like '%'||#{productName}||'%'
+        </if>
+    </select>
+</mapper>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zara.man.ManMapper">
+
+    <insert id="insertMan" parameterType="com.zara.man.Man" useGeneratedKeys="true" keyProperty="manId">
+        INSERT INTO MAN (
+        MANTOP,
+        MANBOTTOM,
+        MANPRICE,
+        MANSTOCK
+        )
+        VALUES (
+        #{manTop},
+        #{manBottom},
+        #{manPrice},
+        #{manStock}
+        )
+    </insert>
+
+    <update id="updateMan" parameterType="com.zara.man.Man">
+        UPDATE MAN
+        SET MANTOP = #{manTop},
+            MANBOTTOM = #{manBottom},
+            MANPRICE = #{manPrice},
+            MANSTOCK = #{manStock}
+        WHERE MANID = #{manId}
+    </update>
+
+    <delete id="deleteMan" parameterType="int">
+        DELETE FROM MAN
+        WHERE MANID = #{manId}
+    </delete>
+
+    <select id="manList" resultType="com.zara.man.Man">
+        SELECT MANTOP,
+               MANBOTTOM,
+               MANPRICE,
+               MANSTOCK
+        FROM MAN
+        WHERE 1=1
+        <if test="manTop != null || manBottom != null">
+            AND productName like '%'||#{productName}||'%'
+        </if>
+    </select>
+
+    <select id="manTop" resultType="com.zara.man.Man">
+        SELECT MANTOP,
+               MANPRICE,
+               MANSTOCK
+        FROM MAN
+        WHERE 1=1
+        <if test="manTop != null ">
+            AND productName like '%'||#{productName}||'%'
+        </if>
+    </select>
+
+    <select id="manBottom" resultType="com.zara.man.Man">
+        SELECT MANBOTTOM,
+               MANPRICE,
+               MANSTOCK
+        FROM MAN
+        WHERE 1=1
+        <if test="manBottom != null ">
+            AND productName like '%'||#{productName}||'%'
+        </if>
+    </select>
+</mapper>

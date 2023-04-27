@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zara.woman.WomanMapper">
+    <insert id="insertWoman" parameterType="com.zara.woman.Woman" useGeneratedKeys="true" keyProperty="womanId">
+        INSERT INTO WOMAN (
+        WOMANTOP,
+        WOMANBOTTOM,
+        WOMANPRICE,
+        WOMANSTOCK
+        )
+        VALUES (
+        #{womanTop},
+        #{womanBottom},
+        #{womanPrice},
+        #{womanStock}
+        )
+    </insert>
+
+    <update id="updateWoman" parameterType="com.zara.woman.Woman">
+        UPDATE WOMAN
+        SET WOMANTOP = #{womanTop},
+            WOMANBOTTOM = #{womanBottom},
+            WOMANPRICE = #{womanPrice},
+            WOMANSTOCK = #{womanStock}
+        WHERE WOMANID = #{womanId}
+    </update>
+
+    <delete id="deleteWoman" parameterType="int">
+        DELETE FROM WOMAN
+        WHERE WOMANID = #{womanId}
+    </delete>
+
+    <select id="womanList" resultType="com.zara.woman.Woman">
+        SELECT WOMANTOP,
+               WOMANBOTTOM,
+               WOMANPRICE,
+               WOMANSTOCK
+        FROM WOMAN
+        WHERE 1=1
+        <if test="womanTop != null || womanBottom != null">
+            AND productName like '%'||#{productName}||'%'
+        </if>
+    </select>
+
+    <select id="womanTop" resultType="com.zara.woman.Woman">
+    SELECT WOMANTOP,
+           WOMANPRICE,
+           WOMANSTOCK
+    FROM WOMAN
+    WHERE 1=1
+    <if test="womanTop != null ">
+        AND productName like '%'||#{productName}||'%'
+    </if>
+    </select>
+
+    <select id="womanBottom" resultType="com.zara.woman.Woman">
+        SELECT WOMANBOTTOM,
+               WOMANPRICE,
+               WOMANSTOCK
+        FROM WOMAN
+        WHERE 1=1
+        <if test="womanBottom != null ">
+            AND productName like '%'||#{productName}||'%'
+        </if>
+    </select>
+</mapper>

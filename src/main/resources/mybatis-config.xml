@@ -7,5 +7,8 @@
         <mapper resource="userMapper.xml"/>
         <mapper resource="cartMapper.xml"/>
         <mapper resource="purchaseMapper.xml"/>
+        <mapper resource="womanMapper.xml"/>
+<!--        <mapper resource="purchaseMapper.xml"/>-->
+<!--        <mapper resource="purchaseMapper.xml"/>-->
     </mappers>
 </configuration>
