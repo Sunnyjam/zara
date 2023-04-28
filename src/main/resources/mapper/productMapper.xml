@@ -20,7 +20,7 @@
     <update id="updateProduct" parameterType="com.zara.product.Product">
         UPDATE PRODUCT
         SET PRODUCTNAME = #{productName},
-            STOCK = #{11},
+            STOCK = #{stock},
             PRICE = #{price}
         WHERE PRODUCTID = #{productId}
     </update>

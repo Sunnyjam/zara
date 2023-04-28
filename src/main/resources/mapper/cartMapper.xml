@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zara.cart.CartMapper">
+
+    <insert id="insertCart" parameterType="com.zara.cart.Cart" useGeneratedKeys="true" keyProperty="cartId">
+        INSERT INTO CART (
+        PRODUCTID,
+        PRODUCTNAME,
+        PRODUCTQUANTITY,
+        PRODUCTPRICE,
+        TOTALQUANTITY,
+        TOTALPRICE
+        )
+        VALUES (
+        #{productId},
+        #{productName},
+        #{productQuantity},
+        #{productPrice},
+        #{totalQuantity},
+        #{totalPrice}
+        )
+    </insert>
+
+    <delete id="deleteCart" parameterType="int">
+        DELETE FROM CART
+        WHERE CARTID = #{cartId}
+    </delete>
+
+<!--    <update id="updateCart" parameterType="com.zara.cart.Cart">-->
+<!--        UPDATE CART-->
+<!--        SET productId = #{productId},-->
+<!--            productName = #{productName},-->
+<!--            productPrice = #{productPrice},-->
+<!--        -->
+<!--            totalQuantity = #{totalQuantity},-->
+<!--            totalQuantity = #{totalQuantity},-->
+<!--            totalPrice = #{totalPrice}-->
+<!--        WHERE CARTID = #{cartId}-->
+<!--    </update>-->
+</mapper>
