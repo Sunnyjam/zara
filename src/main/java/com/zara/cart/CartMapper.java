@@ -8,6 +8,6 @@ public interface CartMapper {
 
     int deleteCart(int cartId);
 
-//    int updateCart(Cart cart);
+    int updateCart(Cart cart);
 
 }

@@ -28,15 +28,11 @@
         WHERE CARTID = #{cartId}
     </delete>
 
-<!--    <update id="updateCart" parameterType="com.zara.cart.Cart">-->
-<!--        UPDATE CART-->
-<!--        SET productId = #{productId},-->
-<!--            productName = #{productName},-->
-<!--            productPrice = #{productPrice},-->
-<!--        -->
-<!--            totalQuantity = #{totalQuantity},-->
-<!--            totalQuantity = #{totalQuantity},-->
-<!--            totalPrice = #{totalPrice}-->
-<!--        WHERE CARTID = #{cartId}-->
-<!--    </update>-->
+    <update id="updateCart" parameterType="com.zara.cart.Cart">
+    UPDATE CART
+    SET PRODUCTQUANTITY = #{productQuantity},
+        TOTALQUANTITY = #{totalQuantity},
+        TOTALPRICE = #{totalPrice}
+    WHERE CARTID = #{cartId}
+    </update>
 </mapper>

@@ -16,7 +16,7 @@ public class CartService {
         return cartMapper.deleteCart(cartId);
     }
 
-//    public int updateCart(Cart cart) {
-//        return cartMapper.updateCart(cart);
-//    }
+    public int updateCart(Cart cart) {
+        return cartMapper.updateCart(cart);
+    }
 }

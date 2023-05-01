@@ -19,8 +19,8 @@ public class CartController {
         return cartService.deleteCart(cartId);
     }
 
-//    @PutMapping("/updateCart")
-//    public int updateCart(@RequestBody Cart cart) {
-//        return cartService.updateCart(cart);
-//    }
+    @PutMapping("/updateCart")
+    public int updateCart(@RequestBody Cart cart) {
+        return cartService.updateCart(cart);
+    }
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zara.purchase.PurchaseMapper">
+
+    <insert id="insertPurchase" parameterType="com.zara.purchase.Purchase" useGeneratedKeys="true" keyProperty="purchaseId">
+        INSERT INTO PURCHASE (
+        CARTID,
+        TOTALQUANTITY,
+        TOTALPRICE,
+        ID
+        )
+        VALUES (
+        #{cartId},
+        #{totalQuantity},
+        #{totalPrice},
+        #{id}
+        )
+    </insert>
+
+    <delete id="deletePurchase" parameterType="int">
+        DELETE FROM PURCHASE
+        WHERE PURCHASEID = #{purchaseId}
+    </delete>
+
+    <select id="readPurchase" resultType="com.zara.purchase.Purchase">
+        SELECT CARTID,
+               TOTALQUANTITY,
+               TOTALPRICE,
+               ID
+        FROM PURCHASE
+        where 1=1
+        <if test="cartId != null">
+            AND cartId like '%'||#{cartId}||'%'
+        </if>
+    </select>
+</mapper>

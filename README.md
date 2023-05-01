@@ -44,15 +44,20 @@
 - 장바구니삭제(/deleteCart)
   - 장바귀수정(/updateCart)
 6. 구매
-- 구매등
-- 구매삭제 
-- 구매조회
+- 구매등록(/insertPurchase)
+- 구매삭제(/deletePurchase)
+- 구매조회(/readPurchase)
 
 7. 로그인
-- 계정등록
-- 계정수정
-- 계정삭제
-- 계정조회
-- 자동 로그인
-- 로그아웃
+- 회원가입 등록(/insertUser)
+- 가입계정 수정(/updateUser)
+- 가입계정 삭제(/deleteUser)
+- 가입계정  전체조회(/readUser)
+- 가입한 계정의 아이디 조회(/readDetailUser)
+- 아이디 찾기(/findId)
+- 비밀번호 찾기(/findPassword)
+- 사용자의 아이디 확인(/checkId)
+- 로그인(/login)
+- 자동 로그인(/autoLogin)
+- 로그아웃(/logout)
 
