@@ -60,10 +60,40 @@
         WHERE  ID = #{id}
     </select>
 
-<!--    <select id="findPassword" parameterType="com.zara.user.User" resultType="com.zara.user.User">-->
-<!--        SELECT ID,-->
-<!--               PASSWORD-->
-<!--        FROM   USER-->
-<!--        WHERE  ID = #{id}-->
-<!--    </select>-->
+    <select id="findPassword" parameterType="com.zara.user.User" resultType="com.zara.user.User">
+        SELECT ID,
+               PASSWORD
+        FROM   USER
+        WHERE  ID = #{id}
+    </select>
+
+    <select id="findId" parameterType="com.zara.user.User" resultType="com.zara.user.User">
+        SELECT ID,
+               PASSWORD
+        FROM   USER
+        WHERE  PASSWORD = #{password}
+    </select>
+
+    <select id="login" parameterType="com.zara.user.User" resultType="com.zara.user.User">
+        SELECT ID,
+               PASSWORD,
+               USEREMAIL,
+               USERNAME
+        FROM  USER
+        WHERE  ID = #{id}
+        AND PASSWORD = #{password}
+    </select>
+
+    <select id="selectSession" parameterType="com.zara.user.User" resultType="String">
+        SELECT *
+        FROM LOGINUSER
+        WHERE sessionId = #{sessionId}
+    </select>
+
+    <update id="autoLogin" parameterType="com.zara.user.User">
+        UPDATE LOGINUSER
+        SET SESSION_ID=#{sessionId},
+            LIMIT_DATE=#{limitDate}
+        WHERE ID= #{id};
+    </update>
 </mapper>

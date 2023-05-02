@@ -35,7 +35,19 @@ public class UserService {
         return userMapper.checkId(id);
     }
 
-//    public User findPassword(User user) {
-//        return  userMapper.findPassword(user);
-//    }
+    public User findPassword(User user) {
+        return userMapper.findPassword(user);
+    }
+
+    public User findId(User user) {
+        return userMapper.findId(user);
+    }
+
+    public User login(User user) {
+        return userMapper.login(user);
+    }
+
+    public String selectSession(String sessionId){
+        return userMapper.selectSession(sessionId);
+    }
 }

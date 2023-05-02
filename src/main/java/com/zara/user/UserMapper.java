@@ -18,5 +18,11 @@ public interface UserMapper {
 
      String checkId(String id);
 
-//     User findPassword(User user);
+     User findPassword(User user);
+
+     User findId(User user);
+
+     User login(User user);
+
+     String selectSession(String sessionId);
 }
