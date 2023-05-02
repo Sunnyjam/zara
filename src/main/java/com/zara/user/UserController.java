@@ -49,7 +49,8 @@ public class UserController {
     }
 
     @PostMapping("/findId")
-    public User findId(@RequestBody User user) {
+    public User findId(@RequestBody User user)
+    {
         return userService.findId(user);
     }
 
@@ -75,11 +76,4 @@ public class UserController {
             session.invalidate();
         }
     }
-//    @PostMapping("/logout")
-//    public void logout(HttpServletRequest request) {
-//        HttpSession session = request.getSession(false);
-//
-//        if (session != null) {
-//            session.invalidate();
-//        }
 }
